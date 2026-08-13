@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajude o Nunu 🐱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background decorations -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <header>
+            <h1>Ajude o Nunu!</h1>
+            <p>Juntos podemos dar a ele uma nova chance 🧡</p>
+        </header>
+
+        <section class="hero-section">
+            <div class="hero-image-wrapper">
+                <img src="nunu.jpg" alt="O gatinho Nunu" class="hero-image">
+            </div>
+        </section>
+
+        <section class="card story">
+            <h2>A História do Nunu</h2>
+            <p>
+                O Nunu é um gatinho muito especial, cheio de amor e energia. Infelizmente, ele foi diagnosticado recentemente e precisa de tratamento de quimioterapia para continuar vivendo feliz e saudável.
+            </p>
+            <p>
+                Os custos do tratamento são altos e qualquer ajuda, por menor que seja, fará uma diferença enorme na vida dele. Ele conta com o seu apoio para vencer essa batalha!
+            </p>
+        </section>
+
+        <section class="card donation-section">
+            <h2>Faça sua Doação</h2>
+            <p>Contribua para o tratamento do Nunu via PIX. Todo o valor arrecadado será destinado diretamente para as sessões de quimioterapia e medicamentos.</p>
+            
+            <div class="progress-container">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill">
+                        <div class="progress-tooltip">R$ 1.500,00</div>
+                    </div>
+                </div>
+                <div class="progress-stats">
+                    <span>Arrecadado: R$ 1.500,00</span>
+                    <span>Meta: R$ 10.000,00</span>
+                </div>
+            </div>
+
+            <div class="pix-area">
+                <div class="pix-title">Chave PIX</div>
+                <div class="pix-key-container">
+                    <div class="pix-key" id="pixKey">04175681000</div>
+                    <button class="copy-btn" onclick="copyPixKey()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copiar Chave
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Feito com ❤️ para o Nunu.</p>
+        </footer>
+    </div>
+
+    <div class="toast" id="toast">Chave PIX copiada com sucesso!</div>
+
+    <script>
+        function copyPixKey() {
+            const pixKey = document.getElementById('pixKey').innerText;
+            navigator.clipboard.writeText(pixKey).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }).catch(err => {
+                console.error('Falha ao copiar: ', err);
+            });
+        }
+        
+        // Simple entry animation for progress bar
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressFill = document.querySelector('.progress-bar-fill');
+            progressFill.style.width = '0%';
+            setTimeout(() => {
+                // Assuming 1500 / 10000 = 15%
+                progressFill.style.width = '15%';
+            }, 300);
+        });
+    </script>
+</body>
+</html>
